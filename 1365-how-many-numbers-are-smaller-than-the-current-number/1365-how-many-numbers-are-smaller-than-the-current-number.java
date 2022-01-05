@@ -3,12 +3,13 @@ class Solution {
         int res[] = new int[nums.length];
         for(int i=0; i<nums.length; ++i)
         {
-            res[i] = 0;
+            int count = 0;
             for(int j=0; j<nums.length; ++j)
             {
                 if(nums[j]<nums[i])
-                    ++res[i];
+                    ++count;
             }
+            res[i] = count;
         }
         return res;
     }
