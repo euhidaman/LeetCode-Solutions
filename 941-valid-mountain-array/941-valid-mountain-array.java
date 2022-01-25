@@ -7,7 +7,6 @@ class Solution {
             if(arr[i+1]<arr[i]) //Breaking point for decreasing loop
             {
                 pos=i;
-                // i=arr.length;
                 break;
             }
             else if(arr[i]==arr[i+1])
