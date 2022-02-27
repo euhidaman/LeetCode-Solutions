@@ -11,6 +11,6 @@ class Solution {
                 right = mid;
         }
         
-        return left;
+        return right; // can be `return left` also
     }
 }
