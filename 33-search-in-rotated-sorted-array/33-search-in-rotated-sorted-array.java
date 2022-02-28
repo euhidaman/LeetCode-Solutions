@@ -1,31 +1,43 @@
 class Solution {
-    public int search(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length-1;
-        return bSearch(left, right, nums, target);
-    }
     
-    public int bSearch(int left, int right, int[] arr, int key)
-    {
-        if(right < left)
+    public int search(int[] arr, int key) {
+        
+        // when only 1 element is present in array
+        if(arr.length == 1 && arr[0]==key)
+            return 0;
+        else if(arr.length == 1 && arr[0]!=key)
             return -1;
         
-        int mid = left + (right-left)/2;
+        // for more than 1 element in array
+        int left=0, right=arr.length-1;
         
-        if(arr[mid]==key)
-            return mid;
-        
-        if(arr[left] <= arr[mid])
+        int ind=0;
+        while(ind!=right && arr[ind]<arr[ind+1])
         {
-            if(arr[left]<=key && key<=arr[mid])
-                return bSearch(left, mid-1, arr, key);
-            else
-                return bSearch(mid+1,right, arr, key);
+            ind++;
         }
         
-        if(arr[mid]<=key && key<=arr[right])
-            return bSearch(mid+1, right, arr, key);
+        int leftFound = bSearch(arr, key, left, ind);
         
-        return bSearch(left, mid-1, arr, key);
+        if(leftFound != -1)
+            return leftFound;
+        else
+            return bSearch(arr, key, ind+1, right);
     }
+    
+    public int bSearch(int[] arr, int key, int left, int right)
+    {
+        while(left<=right)
+        {
+            int mid = left+(right-left)/2;
+            if(arr[mid]==key)
+                return mid;
+            else if(arr[mid]<key)
+                left=mid+1;
+            else
+                right=mid-1;
+        }
+        return -1;
+    }
+    
 }
