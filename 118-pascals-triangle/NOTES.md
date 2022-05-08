@@ -20,4 +20,3 @@ return triangle;
 // Create the first row of the triangle, and it will always have 1
 List<Integer> first_row = new ArrayList<>();
 first_row.add(1);  // So, add 1 to the first row
-triangle.add(first_row); // Add the first row to the triangle
